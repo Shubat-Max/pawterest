@@ -1,0 +1,8 @@
+export const LOAD_IMAGES = "LOAD_IMAGES";
+export const UPDATE_CATEGORY = "UPDATE_CATEGORY";
+export const LOAD_CATEGORIES = "LOAD_CATEGORIES";
+export const CHANGE_OBSERVABLE_CATEGORY = "CHANGE_OBSERVABLE_CATEGORY";
+
+export const START = "_START";
+export const SUCCESS = "_SUCCESS";
+export const FAILED = "_FAILED";
