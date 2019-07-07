@@ -1,5 +1,10 @@
 import { Record, OrderedMap } from 'immutable';
-import { LOAD_CATEGORIES,START,SUCCESS,FAILED } from '../constants/types';
+import {
+    LOAD_CATEGORIES,
+    START,
+    SUCCESS,
+    FAILED
+} from '../constants/types';
 import { arrToMap } from "../helpers";
 
 const CategoryRecord = Record({
