@@ -1,36 +1,45 @@
 import React, {Component, Fragment} from 'react';
+import PropTypes from 'prop-types'
+import {connect} from "react-redux";
 
-import MainMenu from '../MainMenu';
+import FixedMainMenu from '../FixedMainMenu';
 import Categories from '../Categories';
 import MasonryGallery from '../MasonryGallery';
-import {connect} from "react-redux";
 
 
 
 class Wrapper extends Component {
+
+    static propTypes = {
+        observableCategory: PropTypes.number
+    };
+
     render() {
         return (
             <div className={'wrapper'}>
                 <div className={'content'}>
-                    {this.getBody()}
+
+                    {this.getContent()}
+
                 </div>
-                <MainMenu />
+
+                <FixedMainMenu />
+
             </div>
         );
     }
 
-    getBody = () => {
-        if(this.props.observableCategory === null){
-            return <Categories />
-        } else {
+    getContent = () => {
+        if(this.props.observableCategory !== null){
             return (
                 <Fragment>
                     <Categories />
                     <MasonryGallery />
                 </Fragment>
             )
+        } else {
+            return <Categories />
         }
-
     }
 }
 
