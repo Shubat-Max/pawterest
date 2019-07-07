@@ -3,8 +3,7 @@ import { Provider } from 'react-redux';
 
 import store from '../store';
 import Wrapper from './Wrapper';
-
-import './App.css';
+import './App.scss';
 
 function App() {
     return (
