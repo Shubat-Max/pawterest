@@ -1,21 +1,40 @@
 import React, {Component} from 'react';
+import {connect} from 'react-redux';
+import PropTypes from 'prop-types';
+
+import {mapToArr} from "../../helpers";
 import {
     requestCategories,
     changeObservableCategory,
     request10ImagesByCategory
-} from '../../actions'
-import {connect} from "react-redux";
-import {mapToArr} from "../../helpers";
+} from '../../actions';
+
 
 class Categories extends Component {
+
+    static propTypes = {
+        // -> connect
+        categories: PropTypes.array.isRequired,
+        loading: PropTypes.bool.isRequired,
+        loaded: PropTypes.bool.isRequired,
+        images: PropTypes.array.isRequired,
+        observableCategory: PropTypes.number.isRequired,
+        requestCategories: PropTypes.func.isRequired,
+        changeObservableCategory: PropTypes.func.isRequired,
+        request10ImagesByCategory: PropTypes.func.isRequired
+    };
+
+
+
     componentDidMount() {
         this.props.requestCategories();
-    }
-
+    };
 
     render() {
         return this.getBody();
-    }
+    };
+
+
 
     getBody = () => {
         const {loaded, loading, categories, observableCategory} = this.props;
@@ -48,6 +67,8 @@ class Categories extends Component {
             )
         })
     };
+
+
 
     onClickHandler = id => {
         this.props.changeObservableCategory(id);
