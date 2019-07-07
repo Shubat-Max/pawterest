@@ -1,25 +1,40 @@
 import React, {Component, Fragment} from 'react';
-import {request10ImagesByCategory} from "../../actions";
-import {connect} from "react-redux";
-import {mapToArr} from "../../helpers";
+import {connect} from 'react-redux';
+import PropTypes from 'prop-types';
+
+import {mapToArr} from '../../helpers';
+import {request10ImagesByCategory} from '../../actions';
+import MasonrySlide from './MasonrySlide';
+import {relGifURL} from "../../constants/config";
+
 
 class MasonryGallery extends Component {
+
+    static propTypes = {
+        // -> connect
+        observableCategory: PropTypes.number.isRequired,
+        images: PropTypes.array.isRequired,
+        loading: PropTypes.bool.isRequired,
+        loaded: PropTypes.bool.isRequired,
+        request10ImagesByCategory: PropTypes.func.isRequired
+    };
+
     constructor(props){
         super(props);
         this.galleryEnd = React.createRef();
-    }
+    };
 
     componentWillMount() {
         this.props.request10ImagesByCategory(this.props.observableCategory)
-    }
+    };
 
-    componentDidUpdate(prevProps, prevState, snapshot) {
+    componentDidUpdate() {
         this.scrollToBottom();
-    }
+    };
 
     render() {
         return this.getBody();
-    }
+    };
 
 
 
@@ -38,13 +53,11 @@ class MasonryGallery extends Component {
         const {loading, loaded, images, observableCategory} = this.props;
         if((loaded && !loading) || images){
             return mapToArr(images).filter(image => {
+                //filter out all non-current-category images
+                //TODO: develop check for multiple categories for one image
                 return image.categories[0].id === observableCategory
             }).map(image => {
-                return (
-                    <div className={'masonry-gallery--item'} key={image.id}>
-                        <img src={image.url} alt=""/>
-                    </div>
-                )
+                return <MasonrySlide  url={image.url} key={image.id}/>
             })
         }else{
             return <div>LOADING</div>
@@ -70,7 +83,7 @@ class MasonryGallery extends Component {
                 <div className={'loadmore--block'}>
                     <div className={ 'loadmore--btn loadmore--loader' }
                          ref={ this.galleryEnd }>
-                        <img src="./assets/image/gif/cat_loader.gif" alt=""/>
+                        <img src={`${relGifURL}/cat_loader.gif`} alt=""/>
                     </div>
                 </div>
             )
