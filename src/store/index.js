@@ -9,10 +9,10 @@ const enhancer = applyMiddleware(
 
 const store = createStore(
     reducers,
-    compose(enhancer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
+    compose(enhancer/*, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()*/)
 );
 
 // Dev ONLY!
-window.store = store;
+//window.store = store;
 
 export default store;

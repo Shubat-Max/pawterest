@@ -274,13 +274,13 @@ body {
 /*****************************************/
 /*               LOAD MORE               */
 /*****************************************/
-.loadmore--block {
+.loadmore {
     width: 100%;
     display: flex;
     justify-content: center;
     margin: 20px 0 20px 0;
 
-    .loadmore--btn {
+    .loadmore__btn {
         width: 200px;
         height: 50px;
         line-height: 50px;
@@ -295,7 +295,7 @@ body {
         cursor: pointer;
     }
 
-    .loadmore--loader {
+    .loadmore__loader {
         cursor: progress;
 
         img {
@@ -312,11 +312,11 @@ body {
 /***********************************************/
 .masonry-gallery {
     margin: 10px 30px;
-    column-gap: 1.5em;
+    column-gap: 2em;
     display: inline-block;
 
     .masonry-slide {
-        margin: 0 0 1.5em;
+        margin: 0 0 1em;
         border-radius: 6px;
 
         img {
@@ -326,43 +326,13 @@ body {
     }
 }
 
-@media only screen and (min-width: 1520px) {
-    .masonry-gallery {
-        column-count: 6;
-    }
-}
-@media only screen and (max-width: 1519px) and (min-width: 1240px) {
-    .masonry-gallery {
-        column-count: 5;
-    }
-}
-@media only screen and (max-width: 1239px) and (min-width: 1024px) {
-    .masonry-gallery {
-        column-count: 4;
-    }
-}
-@media only screen and (max-width: 1023px) and (min-width: 768px) {
-    .masonry-gallery {
-        column-count: 3;
-    }
-}
-@media only screen and (max-width: 767px) and (min-width: 540px) {
-    .masonry-gallery {
-        column-count: 2;
-    }
-}
-@media only screen and (max-width: 539px) and (min-width: 0px) {
-    .masonry-gallery {
-        column-count: 1;
-    }
-}
+
 
 
 
 /*********************************************/
 /*               MASONRY SLIDE               */
 /*********************************************/
-
 .masonry-slide--wrapper {
     /* Masonry Specific Colors */
     $slide-bg-color: #ebebeb;
@@ -374,7 +344,7 @@ body {
     left: 0;
     display: inline-block;
     min-height: 10px;
-    min-width: 10px;
+    min-width: 100%;
     background: transparent;
     border-radius: 10px;
     padding: 5px;
@@ -472,3 +442,41 @@ body {
         }
     }
 }
+
+
+
+/*********************************************/
+/*               MEDIA QUERIES               */
+/*********************************************/
+@media only screen and (min-width: 1520px) {
+    .masonry-gallery {
+        column-count: 6;
+    }
+}
+@media only screen and (max-width: 1519px) and (min-width: 1240px) {
+    .masonry-gallery {
+        column-count: 5;
+    }
+}
+@media only screen and (max-width: 1239px) and (min-width: 1024px) {
+    .masonry-gallery {
+        column-count: 4;
+    }
+}
+@media only screen and (max-width: 1023px) and (min-width: 768px) {
+    .masonry-gallery {
+        column-count: 3;
+    }
+}
+@media only screen and (max-width: 767px) and (min-width: 540px) {
+    .masonry-gallery {
+        column-count: 2;
+    }
+}
+@media only screen and (max-width: 539px) and (min-width: 0px) {
+    .masonry-gallery {
+        column-count: 1;
+    }
+}
+
+/* TODO: Refactor styles according to BEM (Block Element Modifier) standard */

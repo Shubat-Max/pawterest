@@ -68,9 +68,9 @@ class MasonryGallery extends Component {
         const {loading, loaded} = this.props;
         if(loaded && !loading){
             return (
-                <div className={'loadmore--block'}>
+                <div className={'loadmore'}>
                     <div
-                        className={ 'loadmore--btn' }
+                        className={ 'loadmore__btn' }
                         onClick={ this.onClickHandler }
                         ref={ this.galleryEnd }
                     >
@@ -80,8 +80,8 @@ class MasonryGallery extends Component {
             )
         }else{
             return (
-                <div className={'loadmore--block'}>
-                    <div className={ 'loadmore--btn loadmore--loader' }
+                <div className={'loadmore'}>
+                    <div className={ 'loadmore__btn loadmore__loader' }
                          ref={ this.galleryEnd }>
                         <img src={`${relGifURL}/cat_loader.gif`} alt=""/>
                     </div>
